@@ -19,7 +19,28 @@ document.getElementById('genarate-pin').addEventListener('click', function(){
    displayPin.value = getPin();
 })
 
-document.getElementById('calc-btn').addEventListener('click', function(){
-    const displayNumber = document.getElementById('show-number');
+document.getElementById('calc-btn').addEventListener('click', function(event){
+    const numbers = event.target.innerText;
+    const showNumbers = document.getElementById('show-number');
+    const previousShowNumbers = showNumbers.value;
+    const newShowNumbers = previousShowNumbers + numbers;
+    
+
+    
+    if (isNaN(numbers)){
+        if(numbers === 'C'){
+            showNumbers.value = '';
+        }else if (numbers === '<'){
+            const digits = previousShowNumbers.split('');
+            digits.pop();
+            const remainingDigits = digits.join('');
+            showNumbers.value = remainingDigits;
+           
+            
+        }
+        
+    }else{
+        showNumbers.value = newShowNumbers;
+    }
 
 })
